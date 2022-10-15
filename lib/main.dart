@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:helloworld/quizzler/quizzler.dart';
+import 'package:helloworld/destini/story_page.dart';
 
 void main() => runApp(MyApp());
 
@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
       title: 'My Fluuter app',
       themeMode: ThemeMode.system,
       debugShowCheckedModeBanner: false,
-      home: QuizPage(),
+      home: StoryPage(),
     );
   }
 }
