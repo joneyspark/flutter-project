@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:helloworld/bmi-calculator/calculator_brain.dart';
 import 'package:helloworld/bmi-calculator/constants.dart';
 import 'package:helloworld/bmi-calculator/result_view.dart';
 import 'package:helloworld/bmi-calculator/widget/bottomButtonWidget.dart';
@@ -21,8 +22,8 @@ class BmiCalculatorView extends StatefulWidget {
 
 class _BmiCalculatorViewState extends State<BmiCalculatorView> {
   Gender? selectedGender;
-  int sliderHeight = 180;
-  int sliderWeight = 60;
+  int height = 180;
+  int weight = 60;
   int age = 20;
   @override
   Widget build(BuildContext context) {
@@ -90,7 +91,7 @@ class _BmiCalculatorViewState extends State<BmiCalculatorView> {
                           textBaseline: TextBaseline.alphabetic,
                           children: [
                             Text(
-                              sliderHeight.toString(),
+                              height.toString(),
                               style: heavyFontStyle,
                             ),
                             const Text(
@@ -111,14 +112,14 @@ class _BmiCalculatorViewState extends State<BmiCalculatorView> {
                             inactiveTrackColor: Color(0xFF8D8E98),
                           ),
                           child: Slider(
-                            value: sliderHeight.toDouble(),
+                            value: height.toDouble(),
                             min: 120,
                             max: 600,
                             // activeColor: Color(0xFFEB1555),
                             // inactiveColor: Color(0xFF8D8E98),
                             onChanged: (double newValue) {
                               setState(() {
-                                sliderHeight = newValue.round();
+                                height = newValue.round();
                               });
                             },
                           ),
@@ -144,7 +145,7 @@ class _BmiCalculatorViewState extends State<BmiCalculatorView> {
                           style: labelTextStyle,
                         ),
                         Text(
-                          sliderWeight.toString(),
+                          weight.toString(),
                           style: heavyFontStyle,
                         ),
                         Row(
@@ -154,7 +155,7 @@ class _BmiCalculatorViewState extends State<BmiCalculatorView> {
                               icon: FontAwesomeIcons.minus,
                               onPress: () {
                                 setState(() {
-                                  sliderWeight--;
+                                  weight--;
                                 });
                               },
                             ),
@@ -165,7 +166,7 @@ class _BmiCalculatorViewState extends State<BmiCalculatorView> {
                               icon: FontAwesomeIcons.plus,
                               onPress: () {
                                 setState(() {
-                                  sliderWeight++;
+                                  weight++;
                                 });
                               },
                             ),
@@ -223,10 +224,16 @@ class _BmiCalculatorViewState extends State<BmiCalculatorView> {
           BottomButtonWidget(
             buttonTitle: "CALCULATE",
             onTap: () {
+              BMICalculator calc =
+                  BMICalculator(height: height, weight: weight);
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const BmiResultView(),
+                  builder: (context) => BmiResultView(
+                    bmiResult: calc.getResult(),
+                    bmiText: calc.getBmiText(),
+                    bmiDetails: calc.getInterpretation(),
+                  ),
                 ),
               );
             },

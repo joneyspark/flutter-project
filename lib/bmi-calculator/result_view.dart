@@ -1,17 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:helloworld/bmi-calculator/bmi_calculator_view.dart';
 import 'package:helloworld/bmi-calculator/constants.dart';
 import 'package:helloworld/bmi-calculator/widget/bottomButtonWidget.dart';
 import 'package:helloworld/bmi-calculator/widget/reuseableCardWidget.dart';
 
 class BmiResultView extends StatelessWidget {
-  const BmiResultView({super.key});
-
+  BmiResultView({
+    super.key,
+    required this.bmiResult,
+    required this.bmiText,
+    required this.bmiDetails,
+  });
+  final String bmiResult;
+  final String bmiText;
+  final String bmiDetails;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("BMI Result"),
+        title: const Text(
+          "BMI Result",
+        ),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -33,17 +41,17 @@ class BmiResultView extends StatelessWidget {
               cardChild: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.center,
-                children: const [
+                children: [
                   Text(
-                    "Normal",
+                    bmiText,
                     style: kresultTextStyle,
                   ),
                   Text(
-                    "180",
+                    bmiResult,
                     style: kbmiTextStyle,
                   ),
                   Text(
-                    "Your BMI Result is quite low. You should eat more.",
+                    bmiDetails,
                     style: kbmiBodyStyle,
                     textAlign: TextAlign.center,
                   ),
