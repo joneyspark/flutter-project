@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:helloworld/bmi-calculator/bmi_calculator_view.dart';
+import 'package:helloworld/clima/screens/loading_screen.dart';
 
 void main() => runApp(MyApp());
 
@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
       ),
       // themeMode: ThemeMode.system,
       debugShowCheckedModeBanner: false,
-      home: const BmiCalculatorView(),
+      home: const LoadingScreen(),
     );
   }
 }
