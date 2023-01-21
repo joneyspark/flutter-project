@@ -1,7 +1,22 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:helloworld/coin-ticker/price_screen.dart';
+import 'package:helloworld/flash-chat/screens/chat_screen.dart';
+import 'package:helloworld/flash-chat/screens/login_screen.dart';
+import 'package:helloworld/flash-chat/screens/register_screen.dart';
+import 'package:helloworld/flash-chat/screens/welcome.dart';
+import 'package:helloworld/todo/screens/tasks_screen.dart';
+import 'firebase_options.dart';
 
-void main() => runApp(MyApp());
+// void main() => runApp(MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   MyApp({super.key});
@@ -23,7 +38,14 @@ class MyApp extends StatelessWidget {
       ),
       // themeMode: ThemeMode.system,
       debugShowCheckedModeBanner: false,
-      home: const CoinTickerScreen(),
+      // initialRoute: WelcomeScreen.id,
+      home: const TasksScreen(),
+      // routes: {
+      //   WelcomeScreen.id: (context) => const WelcomeScreen(),
+      //   LoginScreen.id: (context) => const LoginScreen(),
+      //   RegisterScreen.id: (context) => const RegisterScreen(),
+      //   ChatScreen.id: (context) => const ChatScreen(),
+      // },
     );
   }
 }

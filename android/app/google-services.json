@@ -1,0 +1,83 @@
+{
+  "project_info": {
+    "project_number": "271034771393",
+    "firebase_url": "https://burj-al-arab-ed7d5.firebaseio.com",
+    "project_id": "burj-al-arab-ed7d5",
+    "storage_bucket": "burj-al-arab-ed7d5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:271034771393:android:1e9109bfa3ecadbf533140",
+        "android_client_info": {
+          "package_name": "com.joneyspark.dailynotes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "271034771393-h5sbgvk7tg8ifcgedq1p14j6pp8eof5b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDTJ9VaIu4fn64R9WQ7lzdMX5o8-PPV-aY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "271034771393-h5sbgvk7tg8ifcgedq1p14j6pp8eof5b.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "271034771393-2cdkl9mkm6l1ilh2769ic3isgg3luutu.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.joneyspark.helloworld"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:271034771393:android:063e664573a8b5ec533140",
+        "android_client_info": {
+          "package_name": "com.joneyspark.helloworld"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "271034771393-h5sbgvk7tg8ifcgedq1p14j6pp8eof5b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDTJ9VaIu4fn64R9WQ7lzdMX5o8-PPV-aY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "271034771393-h5sbgvk7tg8ifcgedq1p14j6pp8eof5b.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "271034771393-2cdkl9mkm6l1ilh2769ic3isgg3luutu.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.joneyspark.helloworld"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
