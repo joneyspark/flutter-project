@@ -1,36 +1,37 @@
 import 'package:flutter/material.dart';
 import 'package:helloworld/todo/models/Task.dart';
+import 'package:helloworld/todo/models/task_data.dart';
 import 'package:helloworld/todo/widgets/tasks_list.dart';
+import 'package:provider/provider.dart';
 
-class TasksView extends StatefulWidget {
-  const TasksView({Key? key, required this.tasks}) : super(key: key);
-
-  final List<Task> tasks;
-
-  @override
-  State<TasksView> createState() => _TasksViewState();
-}
-
-class _TasksViewState extends State<TasksView> {
+class TasksView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: widget.tasks.length,
-      itemBuilder: ((context, index) {
-        return TasksList(
-          isChecked: widget.tasks[index].isDone,
-          taskTitle: widget.tasks[index].name,
-          checkBoxCallback: (bool checkedBoxState) {
-            // WidgetsBinding.instance.addPostFrameCallback((_) {
-            setState(
-              () {
-                widget.tasks[index].toggleDone();
-              },
-            );
-            // });
-          },
-        );
-      }),
-    );
+    return Consumer<TaskData>(builder: (context, taskData, child) {
+      return ListView.builder(
+        itemCount: taskData.tasks!.length,
+        itemBuilder: ((context, index) {
+          final task = taskData.tasks![index];
+          return TasksList(
+            isChecked: task.isDone,
+            taskTitle: task.name,
+            checkBoxCallback: (bool checkedBoxState) {
+              taskData.updateTask(task);
+
+              // WidgetsBinding.instance.addPostFrameCallback((_) {
+              // setState(
+              //   () {
+              //     Provider.of<TaskData>(context).tasks[index].toggleDone();
+              //   },
+              // );
+              // });
+            },
+            deleteItemCallback: (String taskTitle) {
+              taskData.deleteTask(taskTitle);
+            },
+          );
+        }),
+      );
+    });
   }
 }

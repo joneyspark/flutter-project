@@ -6,21 +6,26 @@ class TasksList extends StatelessWidget {
     required this.isChecked,
     required this.taskTitle,
     this.checkBoxCallback,
+    this.deleteItemCallback,
   });
 
   final bool isChecked;
   final String taskTitle;
   final Function? checkBoxCallback;
+  final Function? deleteItemCallback;
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      title: Text(
-        taskTitle,
-        style: TextStyle(
-          color: Colors.black,
-          decoration:
-              isChecked ? TextDecoration.lineThrough : TextDecoration.none,
+      title: GestureDetector(
+        onLongPress: () => deleteItemCallback!(taskTitle),
+        child: Text(
+          taskTitle,
+          style: TextStyle(
+            color: Colors.black,
+            decoration:
+                isChecked ? TextDecoration.lineThrough : TextDecoration.none,
+          ),
         ),
       ),
       trailing: Checkbox(

@@ -1,22 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:helloworld/todo/models/Task.dart';
+import 'package:helloworld/todo/models/task_data.dart';
 import 'package:helloworld/todo/screens/add_tasks_screen.dart';
 import 'package:helloworld/todo/widgets/tasks_view.dart';
+import 'package:provider/provider.dart';
 
-class TasksScreen extends StatefulWidget {
+class TasksScreen extends StatelessWidget {
   const TasksScreen({super.key});
-
-  @override
-  State<TasksScreen> createState() => _TasksScreenState();
-}
-
-class _TasksScreenState extends State<TasksScreen> {
-  List<Task> tasks = [
-    Task(name: 'Buy Milk'),
-    Task(name: 'Buy Eggs'),
-    Task(name: 'Buy Bread'),
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,16 +20,7 @@ class _TasksScreenState extends State<TasksScreen> {
               child: Container(
                 padding: EdgeInsets.only(
                     bottom: MediaQuery.of(context).viewInsets.bottom),
-                child: AddTaskScreen(
-                  addTaskCallback: (newTaskTitle) {
-                    setState(() {
-                      tasks.add(
-                        Task(name: newTaskTitle),
-                      );
-                    });
-                    Navigator.pop(context);
-                  },
-                ),
+                child: AddTaskScreen(),
               ),
             ),
           );
@@ -81,7 +62,7 @@ class _TasksScreenState extends State<TasksScreen> {
                   ),
                 ),
                 Text(
-                  '${tasks.length} Tasks',
+                  '${Provider.of<TaskData>(context, listen: true).taskCount} Tasks',
                   style: const TextStyle(
                     fontSize: 20.0,
                     color: Colors.white,
@@ -102,7 +83,7 @@ class _TasksScreenState extends State<TasksScreen> {
                   topRight: Radius.circular(20.0),
                 ),
               ),
-              child: TasksView(tasks: tasks),
+              child: TasksView(),
             ),
           ),
         ],
